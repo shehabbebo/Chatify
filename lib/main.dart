@@ -1,6 +1,7 @@
 import 'package:Chatify/firebase_options.dart';
 import 'package:Chatify/screens/chat.dart';
 import 'package:Chatify/screens/cubits/Login_cubit/login_cubit.dart';
+import 'package:Chatify/screens/cubits/chat/chat_cubit.dart';
 import 'package:Chatify/screens/cubits/register_cubit/register_cubit_cubit.dart';
 import 'package:Chatify/screens/login_page.dart';
 import 'package:Chatify/screens/regester.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => LoginCubit()),
         BlocProvider(create: (context) => RegisterCubit()),
+        BlocProvider(create: (context) => ChatCubit()),
       ],
       child: MaterialApp(
         routes: {

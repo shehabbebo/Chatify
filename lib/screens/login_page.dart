@@ -1,5 +1,6 @@
 import 'package:Chatify/screens/chat.dart';
 import 'package:Chatify/screens/cubits/Login_cubit/login_cubit.dart';
+import 'package:Chatify/screens/cubits/chat/chat_cubit.dart';
 import 'package:Chatify/screens/regester.dart';
 import 'package:Chatify/widgets/constants.dart';
 import 'package:Chatify/widgets/custombuttom.dart';
@@ -24,7 +25,8 @@ class LoginPage extends StatelessWidget {
         if (state is LoginLoading) {
           isloading = true;
         } else if (state is LoginSuccess) {
-          Navigator.pushNamed(context, ChatPage.id);
+          BlocProvider.of<ChatCubit>(context).getMessage();
+          Navigator.pushNamed(context, ChatPage.id, arguments: email);
           isloading = false;
         } else if (state is LoginFailure) {
           ScaffoldMessenger.of(context)
