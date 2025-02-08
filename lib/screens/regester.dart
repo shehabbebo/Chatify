@@ -1,5 +1,5 @@
 import 'package:Chatify/screens/chat.dart';
-import 'package:Chatify/screens/cubits/register_cubit/register_cubit_cubit.dart';
+import 'package:Chatify/screens/cubits/auth_cubit/auth_cubit.dart';
 import 'package:Chatify/widgets/constants.dart';
 import 'package:Chatify/widgets/custombuttom.dart';
 import 'package:Chatify/widgets/customtextfiled.dart';
@@ -19,7 +19,7 @@ class Regester extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<RegisterCubit, RegisterState>(
+    return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is RegisterLoading) {
           isloading = true;
@@ -92,7 +92,7 @@ class Regester extends StatelessWidget {
                     Custombuttom(
                       ontap: () async {
                         if (formkey.currentState!.validate()) {
-                          BlocProvider.of<RegisterCubit>(context)
+                          BlocProvider.of<AuthCubit>(context)
                               .registerUser(email: email!, password: password!);
                         } else {}
                       },
