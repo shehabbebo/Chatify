@@ -1,5 +1,5 @@
+import 'package:Chatify/screens/blocs/auth_bloc/auth_bloc.dart';
 import 'package:Chatify/screens/chat.dart';
-import 'package:Chatify/screens/cubits/auth_cubit/auth_cubit.dart';
 import 'package:Chatify/screens/cubits/chat/chat_cubit.dart';
 import 'package:Chatify/screens/regester.dart';
 import 'package:Chatify/widgets/constants.dart';
@@ -20,7 +20,7 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<AuthCubit, AuthState>(
+    return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         if (state is LoginLoading) {
           isloading = true;
@@ -95,8 +95,8 @@ class LoginPage extends StatelessWidget {
                   Custombuttom(
                     ontap: () async {
                       if (formkey.currentState!.validate()) {
-                        BlocProvider.of<AuthCubit>(context)
-                            .LoginUser(email: email!, password: password!);
+                        BlocProvider.of<AuthBloc>(context).add(
+                            LoginEvent(email: email!, password: password!));
                       } else {}
                     },
                     text: 'Login',
